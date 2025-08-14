@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Дневник путешествий</h1>
+
+{% if trips %}
+  {% for trip in trips %}
+    <!-- trips: [0]=id, [1]=username, [2]=title, [3]=location, [4]=image_url, [5]=cost -->
+    <div class="card">
+      <h3><a href="{{ url_for('trip_detail', trip_id=trip[0]) }}">{{ trip[2] }}</a></h3>
+      <p class="muted">Автор: {{ trip[1] }}</p>
+      <p><b>Местоположение:</b> {{ trip[3] }}</p>
+      <p><b>Стоимость:</b> {{ trip[5] }} </p>
+      {% if trip[4] %}
+        <img src="{{ trip[4] }}" alt="Фото из путешествия">
+      {% endif %}
+      <p><a href="{{ url_for('trip_detail', trip_id=trip[0]) }}">Подробнее →</a></p>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>Пока нет записей о путешествиях.</p>
+{% endif %}
+
+{% endblock %}
