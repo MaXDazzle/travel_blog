@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{# trip columns order from app: 
+  0 id, 1 user_id, 2 title, 3 location, 4 lat, 5 lon, 6 image_url, 7 cost, 
+  8 heritage, 9 attractions, 10 mobility, 11 safety, 12 population, 13 greenery, 14 username #}
+
+<div class="card">
+  <h1>{{ trip[2] }}</h1>
+  <p class="muted">Автор: {{ trip[14] }}</p>
+
+  {% if trip[6] %}
+    <img src="{{ trip[6] }}" alt="Фото путешествия" />
+  {% endif %}
+
+  <p><b>Местоположение:</b> {{ trip[3] }}</p>
+  {% if trip[4] and trip[5] %}
+    <p><b>Координаты:</b> {{ trip[4] }}, {{ trip[5] }}</p>
+  {% endif %}
+  <p><b>Стоимость:</b> {{ trip[7] }}</p>
+
+  {% if trip[8] %}
+    <p><b>Места культурного наследия:</b> {{ trip[8] }}</p>
+  {% endif %}
+  {% if trip[9] %}
+    <p><b>Места для посещения:</b> {{ trip[9] }}</p>
+  {% endif %}
+
+  <h3>Оценки</h3>
+  <ul>
+    <li>Удобство передвижения: {{ trip[10] }}/5</li>
+    <li>Безопасность: {{ trip[11] }}/5</li>
+    <li>Населённость: {{ trip[12] }}/5</li>
+    <li>Растительность: {{ trip[13] }}/5</li>
+  </ul>
+
+  <p><a href="{{ url_for('index') }}">← На главную</a></p>
+</div>
+{% endblock %}
