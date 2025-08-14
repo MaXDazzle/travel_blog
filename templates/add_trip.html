@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Добавить путешествие</h2>
+<form method="post" class="card">
+  <div class="grid">
+    <p>
+      <label>Название</label>
+      <input type="text" name="title" required />
+    </p>
+    <p>
+      <label>Стоимость</label>
+      <input type="number" step="0.01" name="cost" required />
+    </p>
+    <p>
+      <label>Местоположение (город/страна)</label>
+      <input type="text" name="location" required />
+    </p>
+    <p>
+      <label>Ссылка на изображение (URL)</label>
+      <input type="url" name="image_url" placeholder="https://..." />
+    </p>
+    <p>
+      <label>Широта (latitude)</label>
+      <input type="number" step="0.000001" name="latitude" placeholder="например, 43.238949" />
+    </p>
+    <p>
+      <label>Долгота (longitude)</label>
+      <input type="number" step="0.000001" name="longitude" placeholder="например, 76.889709" />
+    </p>
+  </div>
+
+  <p>
+    <label>Места культурного наследия</label>
+    <textarea name="heritage" rows="3" placeholder="Перечислите через запятую"></textarea>
+  </p>
+  <p>
+    <label>Места для посещения</label>
+    <textarea name="attractions" rows="3" placeholder="Перечислите через запятую"></textarea>
+  </p>
+
+  <div class="grid">
+    <p>
+      <label>Оценка удобства передвижения (1–5)</label>
+      <input type="number" name="mobility_rating" min="1" max="5" value="3" required />
+    </p>
+    <p>
+      <label>Оценка безопасности (1–5)</label>
+      <input type="number" name="safety_rating" min="1" max="5" value="3" required />
+    </p>
+    <p>
+      <label>Оценка населённости (1–5)</label>
+      <input type="number" name="population_rating" min="1" max="5" value="3" required />
+    </p>
+    <p>
+      <label>Оценка растительности (1–5)</label>
+      <input type="number" name="greenery_rating" min="1" max="5" value="3" required />
+    </p>
+  </div>
+
+  <p><button class="btn" type="submit">Сохранить</button></p>
+</form>
+{% endblock %}
